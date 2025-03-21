@@ -1,28 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Herbal Flashcards 🌿</h1>
+    <div class="flashcards">
+      <Flashcard v-for="(herb, index) in herbs" :key="index" :herb="herb" />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Flashcard from "./components/FlashCard.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { Flashcard },
+  data() {
+    return {
+      herbs: [
+        {
+          name: "ฟ้าทะลายโจร",
+          image: "/img/ฟ้าทะลายโจร.jpg",
+          uses: "Helps with colds, flu, and fever",
+          partsUsed: "Leaves and stems",
+        },
+        {
+          name: "ขมิ้นชัน",
+          image: "/img/ขมิ้นชัน.jpg",
+          uses: "Aids digestion and has anti-inflammatory properties",
+          partsUsed: "Rhizome",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Arial, sans-serif;
+}
+.flashcards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 </style>
